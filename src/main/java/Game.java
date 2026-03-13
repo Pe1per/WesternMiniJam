@@ -8,8 +8,8 @@ import java.nio.IntBuffer;
 
 public class Game {
     public static void main(String[] args){
-        final int INTERNAL_W = 768;
-        final int INTERNAL_H = 432;
+        final int INTERNAL_W = 1920;
+        final int INTERNAL_H = 1080;
 
         if (!GLFW.glfwInit()) throw new IllegalStateException("GLFW init failed");
 
@@ -18,7 +18,7 @@ public class Game {
         GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_TRUE);
         GLFW.glfwWindowHint(GLFW.GLFW_MAXIMIZED, GLFW.GLFW_TRUE);
 
-        long window = GLFW.glfwCreateWindow(1280, 720, "Bester Editor Number 1", 0, 0);
+        long window = GLFW.glfwCreateWindow(1920, 1080, "Bester Editor Number 1", 0, 0);
         if (window == 0) throw new RuntimeException("Window creation failed");
 
         Render renderer = new Render(INTERNAL_W, INTERNAL_H);
