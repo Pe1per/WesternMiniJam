@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Render {
     public final int width;
@@ -8,6 +9,16 @@ public class Render {
         this.width = w;
         this.height = h;
         this.pixels = new int[w * h];
+    }
+
+    //changes the entire array to a specific color
+    public void clearScreen(int color) {
+        Arrays.fill(pixels, color);
+    }
+
+    //returns the Frame
+    public int[] getPixels() {
+        return pixels;
     }
 
     public void drawSprite(
