@@ -22,6 +22,7 @@ public class Game {
         if (window == 0) throw new RuntimeException("Window creation failed");
 
         Render renderer = new Render(INTERNAL_W, INTERNAL_H);
+        Journey journey = new Journey(window);
 
         GLFW.glfwMakeContextCurrent(window);
         GLFW.glfwSwapInterval(1);
@@ -50,6 +51,7 @@ public class Game {
                 lastTime = now;
 
                 //Game Logic
+                journey.render(renderer);
 
                 uploadTexture(frameTex, INTERNAL_W, INTERNAL_H, renderer.getPixels(), scratch);
 
