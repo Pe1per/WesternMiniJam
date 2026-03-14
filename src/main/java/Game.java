@@ -11,6 +11,8 @@ public class Game {
         final int INTERNAL_W = 1920;
         final int INTERNAL_H = 1080;
 
+        int framecounter = 0;
+
         if (!GLFW.glfwInit()) throw new IllegalStateException("GLFW init failed");
 
         GLFW.glfwDefaultWindowHints();
@@ -22,7 +24,7 @@ public class Game {
         if (window == 0) throw new RuntimeException("Window creation failed");
 
         Render renderer = new Render(INTERNAL_W, INTERNAL_H);
-        Journey journey = new Journey(window);
+        Journey journey = new Journey(window, framecounter);
 
         GLFW.glfwMakeContextCurrent(window);
         GLFW.glfwSwapInterval(1);
@@ -49,9 +51,10 @@ public class Game {
 
             if (delta >= FRAME_TIME) {
                 lastTime = now;
+                framecounter++;
 
                 //Game Logic
-                journey.render(renderer);
+                journey.render(renderer,framecounter);
 
                 uploadTexture(frameTex, INTERNAL_W, INTERNAL_H, renderer.getPixels(), scratch);
 
